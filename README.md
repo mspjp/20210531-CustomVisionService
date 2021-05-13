@@ -141,13 +141,13 @@ Content-Type(コンテンツ タイプ):生の画像を送信する場合は、�
 
 5-4 Cloud Shell で次のコマンドを実行します。 [endpoint-URL] は、最後の手順で保存した URL に置き換えます。 [Prediction-Key] は、最後の手順で保存した Prediction-Key の値に置き換えます。
 
-'''
+```
 curl [endpoint-URL] \
 -H "Prediction-Key: [Prediction-Key]" \
 -H "Content-Type: application/json" \
 -d "{'url' : 'https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/VanGoghTest_02.jpg'}" \
 | jq '.'
-'''
+```
 
 コマンドが完了すると、次のスクリーンショットのような JSON 応答が表示されます。 API は、モデル内のすべてのタグに対する確率を返します。 ご覧のように、"painting" tagName の値に 1 に近い確率が設定されているこの画像は、確かに絵画です。 しかし、モデルのトレーニングに使用したどの画家の絵画でもありません。
 
