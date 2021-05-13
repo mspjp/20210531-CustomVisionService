@@ -157,6 +157,6 @@ curl [endpoint-URL] \
 
 |画像|URL|
 |--|--|
-|![](images/picasso-test-02-thumb.png)|https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/PicassoTest_02.jpg|
-|![](images/rembrandt-test-01-thumb.png)|https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/RembrandtTest_01.jpg|
-|![](images/pollock-test-01-thumb.png)|https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/PollockTest_01.jpg|
+|![](images/picasso-test-02-thumb.jpg)|https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/PicassoTest_02.jpg|
+|![](images/rembrandt-test-01-thumb.jpg)|https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/RembrandtTest_01.jpg|
+|![](images/pollock-test-01-thumb.jpg)|https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/PollockTest_01.jpg|
