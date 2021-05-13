@@ -13,7 +13,7 @@ Custom Vision Service で画像認識モデルを構築し、 APIを用いて送
 
 1-3 [新しいプロジェクト] をクリックして、新しいプロジェクトを作成します。
 
-![](images/fig1.jpg)
+![](images/1-portal-click-new-project.png)
 
 1-4 [新しいプロジェクトの作成] ダイアログで、プロジェクトに "Artworks" という名前を付けます。
 
@@ -27,4 +27,4 @@ Custom Vision Service で画像認識モデルを構築し、 APIを用いて送
 |Classification Types|Multilabel|
 |Domain|General|
 
-![](images/fig2.jpg)
+![](images/1-portal-create-project.png)
