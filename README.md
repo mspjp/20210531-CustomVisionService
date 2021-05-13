@@ -119,6 +119,38 @@ Custom Vision Service で画像分類モデルを構築し、 APIを用いて送
 
 ## 5. モデルのAPIを呼び出す
 
-このモデルは使用する準備ができており、特定の画家ごとに絵画をうまく識別することができます。 次にHTTP 経由でAPIを呼び出して、識別結果を取得してみましょう。
+このモデルは使用する準備ができており、特定の画家ごとに絵画をうまく識別することができます。 次に実際のアプリで利用するため、HTTP 経由でAPIを呼び出して、識別結果を取得してみましょう。
 
-5-1
+5-1 Custom Vision Service ポータルで Artworks* プロジェクトに戻り、[パフォーマンス] タブを選択します。
+
+![](images/5-performance-tab.png)
+
+5-2 [発行] を選択して最新の反復を発行します。
+
+5-3 [Prediction URL](予測 URL) を選択します。 呼び出しを行うのに必要な情報のダイアログ ボックスが表示されます。
+
+![](images/5-portal-prediction-url.png)
+
+ダイアログ ボックスで示されているように、予測エンドポイントを呼び出して画像の URL を渡すことできます。 生の画像を要求の本文でエンドポイントに渡すこともできます。
+
+このダイアログ ボックスの 3 つの情報を書き留めておきます。
+
+Prediction-Key(予測キー):すべての要求のヘッダーとしてこのキーを設定する必要があります。 このキーによってエンドポイントへのアクセス権が提供されます。
+Request URL(要求 URL):ダイアログには 2 つの異なる URL が表示されます。 画像の URL を送信する場合は、末尾が /url の最初の URL を使用します。 要求の本文で生の画像を送信する場合は、末尾が /image の 2 番目の URL を使用しします。
+Content-Type(コンテンツ タイプ):生の画像を送信する場合は、要求の本文に画像のバイナリ表現を設定し、コンテンツ タイプを application/octet-stream に設定します。 画像の URL を送信する場合は、本文に JSON として URL を設定し、コンテンツ タイプを application/json に設定します。
+
+5-4 Cloud Shell で次のコマンドを実行します。 [endpoint-URL] は、最後の手順で保存した URL に置き換えます。 [Prediction-Key] は、最後の手順で保存した Prediction-Key の値に置き換えます。
+
+'''
+curl [endpoint-URL] \
+-H "Prediction-Key: [Prediction-Key]" \
+-H "Content-Type: application/json" \
+-d "{'url' : 'https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/VanGoghTest_02.jpg'}" \
+| jq '.'
+'''
+
+コマンドが完了すると、次のスクリーンショットのような JSON 応答が表示されます。 API は、モデル内のすべてのタグに対する確率を返します。 ご覧のように、"painting" tagName の値に 1 に近い確率が設定されているこの画像は、確かに絵画です。 しかし、モデルのトレーニングに使用したどの画家の絵画でもありません。
+
+![](images/5-prediction-json.png)
+
+5-5 上の要求本文内の URL を次の表にある URL に置き換え、さらに予測してみてください。
