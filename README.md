@@ -154,3 +154,9 @@ curl [endpoint-URL] \
 ![](images/5-prediction-json.png)
 
 5-5 上の要求本文内の URL を次の表にある URL に置き換え、さらに予測してみてください。
+
+|画像|URL|
+|--|--|
+|![](images/picasso-test-02-thumb.png)|https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/PicassoTest_02.jpg|
+|![](images/rembrandt-test-01-thumb.png)|https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/RembrandtTest_01.jpg|
+|![](images/pollock-test-01-thumb.png)|https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/PollockTest_01.jpg|
