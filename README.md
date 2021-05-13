@@ -1,5 +1,5 @@
 <h1> MS Tech Camp #7 </br>
-Custom Vision Serviceで画像認識AIを作ろう！</h1>
+Custom Vision Serviceで画像認識AIを作ろう！</h1>
 
 [MS Tech Camp #7](https://mspjp.connpass.com/event/) で使用するハンズオン資料です。
 
