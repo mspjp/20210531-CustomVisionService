@@ -159,7 +159,7 @@ Content-Type(コンテンツ タイプ):生の画像を送信する場合は、�
 curl [endpoint-URL] -H "Prediction-Key: [Prediction-Key]" -H "Content-Type: application/json" -d "{'url' : 'https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/VanGoghTest_02.jpg'}"
 ```
 
-コマンドが完了すると、次のスクリーンショットのような JSON 応答が表示されます。もし見にくいと思われる方がいましたら、こちらの[JSONフォーマッター](https://jsonformatter.curiousconcept.com/)にコピーペーストして利用してみてください。
+コマンドが完了すると、次のスクリーンショットのような JSON 応答が表示されます。もし表示形式が見にくいと思われる方がいましたら、こちらの[JSONフォーマッター](https://jsonformatter.curiousconcept.com/)にコピーペーストして利用してみてください。
 
 API は、モデル内のすべてのタグに対する確率を返します。 ご覧のように、"painting" tagName の値に 1 に近い確率が設定されているこの画像は、確かに絵画です。 しかし、モデルのトレーニングに使用したどの画家の絵画でもありません。
 
