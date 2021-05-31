@@ -7,33 +7,45 @@ Custom Vision Service で画像分類モデルを構築し、 APIを用いて送
 
 ## 1. Custom Vision Service プロジェクトを作成する
 
-1-1 ブラウザで [Custom Vision Service ポータル](https://www.customvision.ai/) を開きます。 その後、[サインイン] を選択します。
+1-1 ブラウザで [Azureポータル](https://portal.azure.com/)を開いて、Azure for Studentsが関連付けられたMicrosoftアカウントでサインインを行います。
 
-1-2 サインインを求められたら、Microsoft アカウントの資格証明を使用してサインインします。 このアプリにユーザー情報へのアクセスを許可するように求められたら、[はい] をクリックし、プロンプトが表示されたらサービス使用条件に同意します。
+1-2 画面上部の検索バーで「Custom Vision」を入力し、現れた候補の中のCustom Visionアイコンをクリックする。
 
-1-3 [新しいプロジェクト] をクリックして、新しいプロジェクトを作成します。
+![](images/1-azure-portal.png)
+
+1-3 「作成」というページに移るので、ここでモデルの計算リソースの情報を入力していきます。まずはリソースグループの新規作成を行います。
+
+![](images/1-rg-create.png)
+
+1-4 「図のように」リソースの名前、場所と価格レベルを設定した後、画面下部にある「確認および作成」のボタンをクリックし、さらに遷移先で「作成」をクリックします。ここでデプロイが終わるまでお待ちください。
+
+![](images/1-rg-create-2.png)
+
+1-2 次にブラウザで [Custom Vision Service ポータル](https://www.customvision.ai/) を開きます。 その後、[サインイン] を選択します。
+
+1-3 サインインを求められたら、先ほどと同じMicrosoft アカウントを使用してサインインします。 このアプリにユーザー情報へのアクセスを許可するように求められたら、[はい] をクリックし、プロンプトが表示されたらサービス使用条件に同意します。
+
+1-4 [NEW PROJECT] をクリックして、新しいプロジェクトを作成します。
 
 ![](images/1-portal-click-new-project.png)
 
-1-4 [新しいプロジェクトの作成] ダイアログで、プロジェクトに "Artworks" という名前を付けます。
+1-5 [Create new project] ダイアログで、プロジェクトに "Artworks" という名前を付けます。
 
-1-5 このプロジェクトに使用する リソース グループ を選択します。 リソース グループをまだ用意していない場合は、[新規作成] を選択して新しいリソース グループを作成します。
+1-6 このプロジェクトに使用する リソース を選択します。先ほどのリソース作成が成功している場合、ここのリストでは自動的に表示されていると思います。 リソースをまだ用意していない場合は、[create new] を選択して新しいリソースを作成します。
 
-1-6 必要事項を記入します。以下の表を参照してください。
+1-7 必要事項を記入します。以下の表を参照してください。
 
 |項目|記入・設定例|
 |--|--|
 |Project Types|Classification|
 |Classification Types|Multilabel|
-|Domain|General|
-
-![](images/1-portal-create-project.png)
+|Domain|General \[A2]|
 
 ## 2. タグを付けた画像をアップロードする
 
 今回のハンズオンでは、ピカソ、ポロック、レンブラントの有名な絵画の画像を Artworks プロジェクトに追加します。 Custom Vision Service がある画家を別の画家から区別することを学習できるように、画像にタグを付けます。
 
-2-1 作成した Artworks プロジェクトで、サイド パネルの [タグ] の右側にあるプラス記号 [+] を選択します。
+2-1 作成した Artworks プロジェクトで、サイド パネルの [Tag] の右側にあるプラス記号 [+] を選択します。
 
 ![](images/2-add-tags.png)
 
@@ -79,7 +91,7 @@ Custom Vision Service で画像分類モデルを構築し、 APIを用いて送
 
 ## 3. モデルを訓練する
 
-3-1 モデルをトレーニングするには、ページの上部にある [トレーニング] を選択します。 モデルをトレーニングするたびに、新しいイテレーションが作成されます。 Custom Vision Service には、進捗を時間を追って比較できるいくつかのイテレーションが保持されます。
+3-1 モデルをトレーニングするには、ページの上部にある [Train] を選択します。 モデルをトレーニングするたびに、新しいイテレーションが作成されます。 Custom Vision Service には、進捗を時間を追って比較できるいくつかのイテレーションが保持されます。
 
 ![](images/2-portal-click-train.png)
 
@@ -88,6 +100,8 @@ Custom Vision Service で画像分類モデルを構築し、 APIを用いて送
 結果では、モデルの精度のメジャーとして 精度 と 再現率 の 2 つが示されます。 モデルにピカソの画像 3 つとレンブラントの画像 3 つを渡したとします。 ピカソのサンプルのうち 2 つは "ピカソ" の画像として正しく識別されましたが、レンブラントのサンプルのうち 2 つはピカソとして誤って識別されたとします。 この場合、4 つの画像のうち 2 つが正しく識別されたため、精度 は 50% になります。 ピカソの 3 つの画像のうち 2 つが正しく識別されたため、再現率 のスコアは 67% になります。
 
 ![](images/2-portal-train-complete.png)
+
+精度、再現率やF値に関するさらに詳しい説明は、こちらの[Qiita](https://qiita.com/FukuharaYohei/items/be89a99c53586fa4e2e4)などのウェブサイトを参照してください。
 
 ## 4. モデルをテストする
 
@@ -121,11 +135,11 @@ Custom Vision Service で画像分類モデルを構築し、 APIを用いて送
 
 このモデルは使用する準備ができており、特定の画家ごとに絵画をうまく識別することができます。 次に実際のアプリで利用するため、HTTP 経由でAPIを呼び出して、識別結果を取得してみましょう。
 
-5-1 Custom Vision Service ポータルで Artworks* プロジェクトに戻り、[パフォーマンス] タブを選択します。
+5-1 Custom Vision Service ポータルで Artworks* プロジェクトに戻り、[Performance] タブを選択します。
 
 ![](images/5-performance-tab.png)
 
-5-2 [発行] を選択して最新の反復を発行します。
+5-2 [Publish] を選択して最新の反復を発行します。
 
 5-3 [Prediction URL](予測 URL) を選択します。 呼び出しを行うのに必要な情報のダイアログ ボックスが表示されます。
 
@@ -139,14 +153,10 @@ Prediction-Key(予測キー):すべての要求のヘッダーとしてこのキ
 Request URL(要求 URL):ダイアログには 2 つの異なる URL が表示されます。 画像の URL を送信する場合は、末尾が /url の最初の URL を使用します。 要求の本文で生の画像を送信する場合は、末尾が /image の 2 番目の URL を使用しします。
 Content-Type(コンテンツ タイプ):生の画像を送信する場合は、要求の本文に画像のバイナリ表現を設定し、コンテンツ タイプを application/octet-stream に設定します。 画像の URL を送信する場合は、本文に JSON として URL を設定し、コンテンツ タイプを application/json に設定します。
 
-5-4 Cloud Shell で次のコマンドを実行します。 [endpoint-URL] は、最後の手順で保存した URL に置き換えます。 [Prediction-Key] は、最後の手順で保存した Prediction-Key の値に置き換えます。
+5-4 コマンドラインプロンプト（Windows）もしくはターミナル（Mac）で次のコマンドを実行します。 [endpoint-URL] は、最後の手順で保存した URL に置き換えます。 [Prediction-Key] は、最後の手順で保存した Prediction-Key の値に置き換えます。
 
 ```
-curl [endpoint-URL] \
--H "Prediction-Key: [Prediction-Key]" \
--H "Content-Type: application/json" \
--d "{'url' : 'https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/VanGoghTest_02.jpg'}" \
-| jq '.'
+curl [endpoint-URL] -H "Prediction-Key: [Prediction-Key]" -H "Content-Type: application/json" -d "{'url' : 'https://raw.githubusercontent.com/MicrosoftDocs/mslearn-classify-images-with-the-custom-vision-service/master/test-images/VanGoghTest_02.jpg'}"
 ```
 
 コマンドが完了すると、次のスクリーンショットのような JSON 応答が表示されます。 API は、モデル内のすべてのタグに対する確率を返します。 ご覧のように、"painting" tagName の値に 1 に近い確率が設定されているこの画像は、確かに絵画です。 しかし、モデルのトレーニングに使用したどの画家の絵画でもありません。
